@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 高校情報カード */
+.highschool-card {
+  @apply bg-white shadow-lg rounded-2xl p-6 mb-6;
+}
+
+/* 高校名 */
+.highschool-name {
+  @apply text-2xl font-bold text-gray-800;
+}
+
+/* 高校偏差値（大きめ） */
+.highschool-score {
+  @apply text-4xl font-extrabold text-blue-600 mt-2;
+}
+
+/* 大学進学情報リスト */
+.university-list {
+  @apply mt-4;
+}
+
+.university-item {
+  @apply flex justify-between items-center py-2 border-b border-gray-300;
+}
+
+.university-name {
+  @apply text-lg font-medium;
+}
+
+.university-score {
+  @apply text-xl font-bold text-gray-500;
+}
+
+/* 大学偏差値平均 */
+.university-average {
+  @apply text-lg font-semibold text-gray-700 mt-4;
+}
+
+/* 進学偏差（大きめ） */
+.progress-score {
+  @apply text-5xl font-extrabold text-green-600 mt-4;
+}
+
+/* 近い高校のリスト */
+.related-schools {
+  @apply mt-6;
+}
+
+.related-school-item {
+  @apply py-2 border-b border-gray-200;
+}
+
+.related-school-link {
+  @apply text-blue-500 hover:underline;
+}
+
+/* スマホ対応 */
+@media (max-width: 640px) {
+  .highschool-card {
+    @apply p-4;
+  }
+  .highschool-score, .progress-score {
+    @apply text-3xl;
+  }
+  .university-score {
+    @apply text-lg;
+  }
+}
