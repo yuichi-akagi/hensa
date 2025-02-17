@@ -1,13 +1,20 @@
 {
+  "_react-COZDq2qU.js": {
+    "file": "assets/react-COZDq2qU.js",
+    "name": "react"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-b1vfE94h.css",
+    "file": "assets/app-Br-MhixH.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
-  "resources/js/app.js": {
-    "file": "assets/app-CqflisoM.js",
-    "name": "app",
-    "src": "resources/js/app.js",
-    "isEntry": true
+  "resources/js/main.jsx": {
+    "file": "assets/main-CGJXN0Tr.js",
+    "name": "main",
+    "src": "resources/js/main.jsx",
+    "isEntry": true,
+    "imports": [
+      "_react-COZDq2qU.js"
+    ]
   }
 }

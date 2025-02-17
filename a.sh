@@ -58,7 +58,7 @@ php artisan import:univ univs/univ_2025_2.tsv 1 2020 2025
 php artisan import:univ univs/univ_2025_2_2.tsv 1 2020 2025
 
 php artisan import:pass_result ./saitama/hs_1.txt 
-php artisan import:pass_result saitama/hs_74.txt 
+php artisan import:pass_result saitama/hs_2.txt 
 
 php artisan import:hs_stat_ss saitama/hs_ss_2025.tsv 2025 2025
 php artisan import:hs_stat_ss saitama/hs_ss_2025.tsv 2024 2025
