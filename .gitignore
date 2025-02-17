@@ -5,6 +5,8 @@
 /storage/*.key
 /storage/pail
 /vendor
+/saitama
+/univs
 .env
 .env.backup
 .env.production
