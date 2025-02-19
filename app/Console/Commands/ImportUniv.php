@@ -59,6 +59,7 @@ class ImportUniv extends Command
                 'name' => $name,
                 'kinds' => $kinds,
             ]);
+            $obj->kinds = $kinds;
             $obj->save();
             $obj2 = UnivStat::firstOrCreate(
             [

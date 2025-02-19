@@ -35,6 +35,9 @@ class HsController extends Controller
         $tmp = [];
         foreach ( $pass_results as $rec ) {
             $key = sprintf("%04d%02d%04d",$rec->grad_count,$rec->grad_ss,$rec->id);
+            if ( in_array($rec->univ->name ,['私大','国公立大学'])) {
+                $key = sprintf("%04d%02d%04d",0,$rec->grad_ss,$rec->id);
+            }
             $tmp[$key] = $rec;
         }
         krsort($tmp);
@@ -88,6 +91,11 @@ class HsController extends Controller
             $name = $rec->univ->name;
             if ( $rec->faculty_name != '不明' ) {
                 $name .= '（' . $rec->faculty_name . '）';
+            }
+            if ( in_array($rec->univ->name,['国公立大学','私大']) ) {
+                $others->value += $rec->grad_count;
+                $others->percentage = round($others->value / $total * 100,2);
+                continue;
             }
             if ( count($json) > 10 || $rec->grad_count / $total < 0.05 ) {
                 $others->value += $rec->grad_count;

@@ -78,7 +78,33 @@
 @endforeach
     </table>
 @endif
-
 @endforeach
+
+@if ( count($other_results) )
+<h2>その他</h2>
+    <table class="min-w-full bg-white border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="py-2 px-4 border border-gray-300">大学名</th>
+          <th class="py-2 px-4 border border-gray-300">学部</th>
+          <th class="py-2 px-4 border border-gray-300">合格・進学</th>
+          <th class="py-2 px-4 border border-gray-300">人数</th>
+          <th class="py-2 px-4 border border-gray-300">偏差値</th>
+        </tr>
+      </thead>
+    @foreach ( $other_results as $rec2 )
+      <tbody>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2 px-4 border border-gray-300">{{ $rec2->univ->name }}</td>
+          <td class="py-2 px-4 border border-gray-300">{{ $rec2->faculty_name }}</td>
+          <td class="py-2 px-4 border border-gray-300">{{ $rec2->result }}</td>
+          <td class="py-2 px-4 border border-gray-300">{{ $rec2->grad_count }}</td>
+          <td class="py-2 px-4 border border-gray-300">{{ $rec2->grad_ss }}（{{ $rec2->grad_ss_year }}）</td>
+        </tr>
+      </tbody>
+@endforeach
+    </table>
+@endif
+
   </div>
 @stop

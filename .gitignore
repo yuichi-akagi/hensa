@@ -6,6 +6,7 @@
 /storage/pail
 /vendor
 /saitama
+/hss
 /univs
 .env
 .env.backup

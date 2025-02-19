@@ -90,8 +90,9 @@ const UniversityChart = () => {
   const COLORS = generateColors(data.length);
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <PieChart>
+  <div style={{ width: "100%", height: "500px" }}>
+    <ResponsiveContainer>
+      <PieChart width={0}>
         <Pie
           data={data}
           cx="50%"
@@ -115,11 +116,12 @@ const UniversityChart = () => {
         />
         <Legend
           layout="vertical"
-          align="right"
-          verticalAlign="middle"
+          align="center"
+          verticalAlign="bottom"
         />
       </PieChart>
     </ResponsiveContainer>
+</div>
   );
 };
 
