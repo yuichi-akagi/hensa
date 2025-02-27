@@ -12,8 +12,10 @@ Route::get('/', function () {
 Route::get('/test',[TestController::class,'index'])->name('test');
 */
 
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\HsController;
 Route::get('/{prefRoma}/hs_{hs_id}',[HsController::class,'index'])->name('hs');
+Route::get('/',[TopController::class,'index'])->name('top');
 
 use App\Http\Controllers\Manages\TopController as ManageTopController;
 use App\Http\Controllers\Manages\HsController as ManageHsController;
