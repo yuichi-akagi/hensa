@@ -50,7 +50,18 @@
 
     <!-- Footer -->
     <footer class="bg-orange-200 text-center py-4 mt-6 shadow-md">
+        <div class="flex justify-center space-x-4">
+            <a href="/hensa/" class="hover:underline">ホーム</a>
+            <a href="/" class="hover:underline">ブログ</a>
+<a href="https://x.com/tawamurerucom" target="_blank" class="text-gray-600 hover:text-blue-500">
+    <svg width="24px" height="24px" class="fill-current" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M23 3a10.9 10.9 0 01-3.14.86A4.48 4.48 0 0022.4.34a9.18 9.18 0 01-2.92 1.12 4.52 4.52 0 00-7.72 4.12A12.8 12.8 0 011.64 2.9a4.52 4.52 0 001.4 6.08A4.48 4.48 0 01.88 8v.06a4.52 4.52 0 003.62 4.43 4.5 4.5 0 01-2.04.08 4.52 4.52 0 004.23 3.15A9.08 9.08 0 010 18.14a12.8 12.8 0 006.92 2.02c8.3 0 12.84-6.86 12.84-12.83 0-.2 0-.39-.02-.59A9.18 9.18 0 0023 3z"/>
+    </svg>
+</a>
+        </div>
+        <div class="container mx-auto text-center">
             <p>&copy; 2025 {{ env('APP_TITLE') }}. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
