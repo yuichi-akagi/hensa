@@ -1,6 +1,6 @@
 {
-  "_react-COZDq2qU.js": {
-    "file": "assets/react-COZDq2qU.js",
+  "_react-8VvVtmtA.js": {
+    "file": "assets/react-8VvVtmtA.js",
     "name": "react"
   },
   "resources/css/app.css": {
@@ -9,12 +9,12 @@
     "isEntry": true
   },
   "resources/js/main.jsx": {
-    "file": "assets/main-xEHpnASq.js",
+    "file": "assets/main-nSqqx2cT.js",
     "name": "main",
     "src": "resources/js/main.jsx",
     "isEntry": true,
     "imports": [
-      "_react-COZDq2qU.js"
+      "_react-8VvVtmtA.js"
     ]
   }
 }

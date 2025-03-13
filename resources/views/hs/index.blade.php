@@ -56,40 +56,7 @@
                     <td class="border border-orange-300 bg-white p-2">{{ $hs_stat->hs->kinds}}・{{ $hs_stat->hs->gender }}</td>
                 </tr>
             </table>
-        </div>
 
-        <!-- 進学偏差 -->
-        <div class="mb-6">
-            <table class="w-full text-3xl md:text-5xl text-left text-center text-orange-800 border-collapse rounded-2xl"  aria-label="{{ $hs_stat->hs->name }}の進学偏差地">
-                <tr>
-                    <th class="border border-orange-300 bg-orange-800 text-white p-2">進学偏差</th>
-                </tr>
-                <tr>
-                    <td class="border border-orange-300 bg-white p-2">{{ number_format(100 + $hs_stat->grad_ss - $hs_stat->adm_ss,2) }}</td>
-                </tr>
-            </table>
-        </div>
-<div class="mb-6"><p class="italic bg-yellow-100 text-amber-800 p-4 rounded mb-4">「<span class="text-xl md:text-2xl text-bold">進学偏差</span>」とは、大学の偏差値から高校の偏差値を引くことにより、その高校における進学指導の効果を数値化したものです。<br>式としては『<span class="text-xl md:text-2xl text-bold">100＋大学偏差値－高校偏差値</span>』で表します。<br>この指標はあくまで統計的な参考値であり、個々の生徒の努力や様々な要因により、<br>実際の進学結果は大きく異なる可能性があります。<br><br>また、この数値の算出には以下の制約があることにご留意ください：<br>　・大学の偏差値は学部により異なりますが、公表データの制限により平均値を使用しています<br>　・進学先が不明な場合は一定の仮定のもとで計算しています<br>　・単年度のデータに基づいているため、年度による変動があります</p></div>
-
-            
-        <!-- 高校情報テーブル -->
-        <div class="bg-white shadow-lg rounded-2xl p-6 mb-6 border border-orange-300">
-            <table class="w-full border-collapse border border-orange-300 rounded-xl mt-4" aria-label="{{ $hs_stat->hs->name }}の進学情報">
-                <tr>
-                    <th class="border border-orange-300 bg-orange-800 text-white p-2">合格大学偏差値平均</th>
-                    <td class="border border-orange-300 bg-white p-2 text-2xl">{{ number_format($hs_stat->grad_ss,2) }}</td>
-                </tr>
-                <tr>
-                    <th class="border border-orange-300 bg-orange-800 text-white p-2">合格実績年度</th>
-                    <td class="border border-orange-300 bg-white p-2">{{ $hs_stat->grad_year }}年</td>
-                </tr>
-                <tr>
-                    <th class="border border-orange-300 bg-orange-800 text-white p-2">大学偏差基準年度</th>
-                    <td class="border border-orange-300 bg-white p-2">{{ $hs_stat->grad_ss_year }}年</td>
-                </tr>
-            </table>
-
-        
             <table class="w-full border-collapse border border-orange-300 rounded-xl mt-4" aria-label="{{ $hs_stat->hs->name }}の入学時偏差値情報">
                 <tr>
                     <th class="border border-orange-300 bg-orange-800 text-white p-2">高校入学偏差値</th>
@@ -104,6 +71,66 @@
                     <td class="border border-orange-300 bg-white p-2">{{ $hs_stat->adm_ss_year }}年</td>
                 </tr>
             </table>
+        </div>
+
+        <!-- 進学偏差 -->
+        <div class="bg-white shadow-lg rounded-2xl p-6 mb-6 border border-orange-300">
+@if ( $hs_stat->grad_ss )
+            <table class="w-full text-3xl md:text-5xl text-left text-center text-orange-800 border-collapse rounded-2xl"  aria-label="{{ $hs_stat->hs->name }}の進学偏差地">
+                <tr>
+                    <th class="border border-orange-300 bg-orange-800 text-white p-2">進学偏差（進学実績ベース）</th>
+                </tr>
+                <tr>
+                    <td class="border border-orange-300 bg-white p-2">{{ number_format(100 + $hs_stat->grad_ss - $hs_stat->adm_ss,2) }}</td>
+                </tr>
+            </table>
+@endif
+@if ( $hs_stat->pass_ss )
+            <table class="w-full text-3xl md:text-5xl text-left text-center text-orange-800 border-collapse rounded-2xl"  aria-label="{{ $hs_stat->hs->name }}の進学偏差地">
+                <tr>
+                    <th class="border border-orange-300 bg-orange-800 text-white p-2">進学偏差（合格実績ベース）</th>
+                </tr>
+                <tr>
+                    <td class="border border-orange-300 bg-white p-2">{{ number_format(90 + $hs_stat->pass_ss - $hs_stat->adm_ss,2) }}</td>
+                </tr>
+            </table>
+@endif
+
+        </div>
+
+
+<div class="mb-6"><p class="italic bg-yellow-100 text-amber-800 p-4 rounded mb-4">「<span class="text-xl md:text-2xl text-bold">進学偏差</span>」とは、大学の偏差値から高校の偏差値を引くことにより、その高校における進学指導の効果を数値化したものです。<br>式としては『<span class="text-xl md:text-2xl text-bold">基準係数＋大学偏差値－高校偏差値</span>』で表します。<br>大学偏差値は進学実績ベースと合格実績ベースがあり、進学実績ベースの場合は基準係数を100、合格実績ベースの場合は90を使用します。<br>この指標はあくまで統計的な参考値であり、個々の生徒の努力や様々な要因により、<br>実際の進学結果は大きく異なる可能性があります。<br><br>また、この数値の算出には以下の制約があることにご留意ください：<br>　・大学の偏差値は学部により異なりますが、公表データの制限により平均値を使用しています<br>　・進学先が不明な場合は一定の仮定のもとで計算しています<br>　・単年度のデータに基づいているため、年度による変動があります</p></div>
+
+            
+        <!-- 高校情報テーブル -->
+        <div class="bg-white shadow-lg rounded-2xl p-6 mb-6 border border-orange-300">
+            <h2 class="text-xl font-bold text-orange-700">進学・合格大学情報</h2>
+            <table class="w-full border-collapse border border-orange-300 rounded-xl mt-4" aria-label="{{ $hs_stat->hs->name }}の進学情報">
+@if ( $hs_stat->grad_ss )
+                <tr>
+                    <th class="border border-orange-300 bg-orange-800 text-white p-2">大学進学偏差値平均</th>
+                    <td class="border border-orange-300 bg-white p-2 text-2xl">{{ number_format($hs_stat->grad_ss,2) }}</td>
+                </tr>
+                <tr>
+                    <th class="border border-orange-300 bg-orange-800 text-white p-2">大学進学実績年度</th>
+                    <td class="border border-orange-300 bg-white p-2">{{ $hs_stat->grad_year }}年</td>
+                </tr>
+            </table>
+@endif
+@if ( $hs_stat->pass_ss )
+            <table class="w-full border-collapse border border-orange-300 rounded-xl mt-4" aria-label="{{ $hs_stat->hs->name }}の合格情報">
+                <tr>
+                    <th class="border border-orange-300 bg-orange-800 text-white p-2">合格大学偏差値平均</th>
+                    <td class="border border-orange-300 bg-white p-2 text-2xl">{{ number_format($hs_stat->pass_ss,2) }}</td>
+                </tr>
+                <tr>
+                    <th class="border border-orange-300 bg-orange-800 text-white p-2">合格実績年度</th>
+                    <td class="border border-orange-300 bg-white p-2">{{ $hs_stat->grad_year }}年</td>
+                </tr>
+            </table>
+@endif
+<div id="ss-chart-root" data-school-id="{{ $hs_stat->hs->id }}" data-type="{{ $hs_stat->dept_type }}" data-year="{{ $hs_stat->grad_year }}"></div>
+
         </div>
 
         <div class="university-list bg-white shadow-md rounded-xl p-4 mb-6 border border-orange-200">
@@ -130,19 +157,34 @@
 <div id="chart-univ-grad-count" data-school-id="{{ $hs_stat->hs->id }}" data-type="{{ $hs_stat->dept_type }}"></div>
             </div>
         </div>
+@if ( count($results) )
         <!-- 大学進学情報リスト -->
         <div class="university-list bg-white shadow-md rounded-xl p-4 mb-6 border border-orange-200">
             <h2 class="text-xl font-bold text-orange-700">進学先大学</h2>
 <div id="chart-root" data-school-id="{{ $hs_stat->hs->id }}" data-year="{{ $hs_stat->grad_year }}" data-type="{{ $hs_stat->dept_type }}"></div>
+@foreach ( $results as $rec )
+            <div class="university-item flex justify-between items-center py-2 border-b border-gray-300">
+                <span class="university-name">{{ $rec->univ->name }}{{ strcat('（',str_replace('不明','',$rec->faculty_name),'）') }} {{ $rec->grad_count }}名</span>
+                <span class="university-score font-bold text-gray-700">偏差値: {{ $rec->grad_ss }}</span>
+            </div>
+@endforeach
+        </div>
+@endif
+
+@if ( count($pass_results) )
+        <!-- 大学合格情報リスト -->
+        <div class="university-list bg-white shadow-md rounded-xl p-4 mb-6 border border-orange-200">
+            <h2 class="text-xl font-bold text-orange-700">合格大学</h2>
+<div id="chart-root2" data-school-id="{{ $hs_stat->hs->id }}" data-year="{{ $hs_stat->grad_year }}" data-type="{{ $hs_stat->dept_type }}"></div>
 @foreach ( $pass_results as $rec )
             <div class="university-item flex justify-between items-center py-2 border-b border-gray-300">
                 <span class="university-name">{{ $rec->univ->name }}{{ strcat('（',str_replace('不明','',$rec->faculty_name),'）') }} {{ $rec->grad_count }}名</span>
                 <span class="university-score font-bold text-gray-700">偏差値: {{ $rec->grad_ss }}</span>
             </div>
 @endforeach
-
-
         </div>
+@endif
+
 
 <?php /*
         <!-- 近い高校のリスト -->

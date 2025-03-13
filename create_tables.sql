@@ -56,6 +56,8 @@ CREATE TABLE hs_stats (
     grad_university_count INTEGER,            -- 卒業生うち大学生数
     grad_ss REAL,      -- 大学偏差値平均
     grad_ss_year INTEGER,         -- 偏差値計算対象年
+    pass_ss REAL,
+    pass_ss_year INTEGER,
     adm_year INTEGER,             -- 入学年
     adm_count INTEGER,            -- 入学整数（入学者数）
     adm_ss REAL,         -- 高校偏差値
@@ -103,7 +105,7 @@ CREATE TABLE pass_results (
     grad_year INTEGER NOT NULL,         -- 大学受験年
     grad_count INTEGER,            -- 卒業生数
     comments TEXT,
-    result TEXT CHECK(result IN ('合格', '進学')),  -- 実績（合格または進学）
+    result TEXT CHECK(result IN ('浪人合格','現役合格','合格', '進学')),  -- 実績（合格または進学）
     dept_type TEXT CHECK (dept_type IN ('普通科','理数科','外国語科','その他','統合')),
     created_at TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime')),
     updated_at TEXT NOT NULL DEFAULT (DATETIME('now', 'localtime')),
